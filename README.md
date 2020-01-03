@@ -1,2 +1,0 @@
-# PartTracker
-Part Tracker app
