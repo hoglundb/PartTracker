@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="main.js"></script>
+  <script src="modalFunctions.js"></script>
+  <script src="ajaxRequests.js"></script>
+  <script src="dropdowns.js"></script>
+   <script src="tables.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="printJQuery.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav span {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-size: 17px;
+
+}
+
+.topnav span:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav span.active {
+  background-color: #3BB2F7;
+  color: white;
+}
+
+.dropdown{
+  border-radius:6px;
+  width:140px;
+  height:33px;
+}
+</style>
+</head>
+<body>
+<div class="topnav">
+  <span href="#news" class="active" id="navbarOptionMyparts" style="margin-left:5%">Me</span>
+  <span href="#contact" id="navbarOptionPartFinder" >Part Finder</span>
+  <span href="#about" id="navbarOptionAssemblyReport">Assemby Finder</span>
+</div>
+<div id = "inputFields" style="margin-left:40px; margin-top:10px">
+  <select id="partNumberDropdown" style="display:none" class = "dropdown">
+  </select>
+  <select id="partsSearchTypeDropdown" style="display:none" class = "dropdown">
+   <option selected disabled id="none">--Search Type--</option>
+   <option id="all" onClick = >All</option>
+   <option id="user">User</option>
+   <option id="location" >Location</option>
+  </select>
+  <select id="UsersDropdown" style="display:none" class = "dropdown">
+   <option id="none" selected disabled>--Users--</option>
+  </select>
+  <select id="locationsDropdown" style="display:none" class = "dropdown">
+   <option selected disabled id="none">--Location--</option>
+  </select>
+  <select id="assembliesDropdown" style="display:none" class = "dropdown">
+   <option selected disabled>--Assemblies--</option>
+  </select>
+  <button class="btn btn-info" id = "searchButton" disabled >Search</button>
+</div>
+
+<table id="myPartsTable" class="table " style="width:90%; margin-left:40px; margin-top:30px; display:none">
+  <thead>
+  <tr>
+    <th scope="col" style="width:12%">Part Number</th>
+    <th scope="col" style="width:15%">Item</th>
+    <th scope="col" style="width:15%">Quantity</th>
+  </tr>
+</thead>
+<tbody id="myPartsTableBody"> </tbody>
+</table>
+
+<table id="partFinderTable" class="table " style="width:90%; margin-left:40px; margin-top:30px; display:none">
+  <thead>
+  <tr>
+    <th scope="col" style="width:12%">Part Number</th>
+    <th scope="col" style="width:15%">Description</th>
+    <th scope="col" style="width:15%">Attached To</th>
+    <th scope="col" style="width:15%">Quantity</th>
+  </tr>
+</thead>
+<tbody id="partFinderTableBody"> </tbody>
+</table>
+
+
+<div id="assemblyReport">
+<div style ="margin-top:40px; margin-left:40px" id="assemblyReportTile"></div>
+<table id="assemblyReportTable" class="table " style="width:90%; margin-left:40px; margin-top:10px; display:none">
+  <thead>
+  <tr>
+    <th scope="col" style="width:10%">Part Number</th>
+    <th scope="col" style="width:15%">Description</th>
+    <th scope="col" style="width:15%">Quantity Needed</th>
+    <th scope="col" style="width:20%">Quantity Stock  <button class="btn btn-info" id="printButton">Print</button></th>
+  </tr>
+</thead>
+<tbody id="assemblyReportTableBody"> </tbody>
+</table>
+</div>
+
+<!--    A big fat boostrap modal for MyParts->Move    -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--    Has list of locations/users and place    -->
+        <span id = "MoveMyParts">foobar</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
